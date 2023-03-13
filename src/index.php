@@ -89,7 +89,11 @@ function calculate($statement)
             case '/':
                 $arg2 = array_pop($calcStack);
                 $arg1 = array_pop($calcStack);
-                array_push($calcStack, $arg1 / $arg2);
+                if ($arg2 == '0') {
+                    return 'Division by zero';
+                } else {
+                    array_push($calcStack, $arg1 / $arg2);
+                }
                 break;
             default:
                 array_push($calcStack, $token);
